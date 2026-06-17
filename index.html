@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Supabase Chat Room</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="loginBox" class="center">
+  <h2>Enter Chat Room</h2>
+  <input id="nameInput" placeholder="Your name..." />
+  <button onclick="enterChat()">Enter</button>
+</div>
+
+<div id="chatBox" class="hidden">
+  <div id="messages"></div>
+
+  <div class="inputBox">
+    <input id="msgInput" placeholder="Type message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
