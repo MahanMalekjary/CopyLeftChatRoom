@@ -24,6 +24,8 @@ Or simply download the project and run it locally. As long as you have an intern
 - 🎨 Fully customizable UI
 - 🔧 Easy to modify source code
 - 📂 Open-source
+- ❌ No message monitoring
+- ✅ Any type of photo, video, message, file is allowed
 
 ---
 
