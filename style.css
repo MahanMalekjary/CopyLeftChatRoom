@@ -1,199 +1,666 @@
-/* 🌌 Base */
-* {
-  box-sizing: border-box;
+/* =====================================================
+   📼 RETRO CLASSIC CHATROOM 2000s EDITION
+   MSN + Windows XP + CRT + Vintage Paper
+===================================================== */
+
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
-  background: radial-gradient(circle at top, #0b1020, #05060a);
-  color: #e5e7eb;
-
-  overflow: hidden; /* فقط دسکتاپ */
+:root{
+  --paper:#f6ead1;
+  --paper-dark:#e3d0a6;
+  --brown:#4b3425;
+  --gold:#d6a34a;
+  --orange:#c9782c;
+  --red:#8f2f22;
+  --shadow:rgba(0,0,0,.15);
 }
 
-/* ✨ Login Screen */
-.center {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* ===========================
+   BODY
+=========================== */
 
-  background: radial-gradient(circle at center, #111827, #05060a);
+body{
+  margin:0;
+  font-family:"Trebuchet MS",Verdana,sans-serif;
+
+  background:
+  radial-gradient(circle at top,#f7edd8,#dcc6a1);
+
+  color:var(--brown);
+
+  overflow:hidden;
+  position:relative;
 }
 
-.center h2 {
-  margin-bottom: 15px;
-  font-size: clamp(18px, 4vw, 22px);
-  letter-spacing: 1px;
-  color: #93c5fd;
-  text-align: center;
+/* CRT Scanlines */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  background:
+  repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.05) 0px,
+    rgba(255,255,255,.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+
+  opacity:.35;
+  z-index:999;
 }
 
-input {
-  padding: 12px 14px;
-  margin: 6px;
-  width: min(240px, 80vw);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.06);
-  color: white;
-  outline: none;
-  backdrop-filter: blur(10px);
-  transition: 0.2s;
+/* Vintage Burst */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  background:
+  radial-gradient(
+    circle at center,
+    transparent 0%,
+    transparent 45%,
+    rgba(255,196,74,.15) 100%
+  );
+
+  z-index:998;
 }
 
-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 15px rgba(59,130,246,0.3);
+/* ===========================
+   LOGIN
+=========================== */
+
+.center{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+
+  background:
+  radial-gradient(circle,#f7edd8,#d6bf93);
 }
 
-button {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
-  box-shadow: 0 10px 30px rgba(59,130,246,0.2);
+.center h2{
+  margin-bottom:20px;
+
+  font-size:clamp(22px,5vw,34px);
+
+  color:var(--red);
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+  text-shadow:
+  2px 2px 0 #fff7d6,
+  4px 4px 0 rgba(0,0,0,.15);
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(139,92,246,0.3);
+/* ===========================
+   INPUTS
+=========================== */
+
+input{
+  padding:12px 14px;
+  margin:6px;
+
+  width:min(280px,90vw);
+
+  border-radius:4px;
+
+  border:3px solid #a06a35;
+
+  background:#fff7e5;
+
+  color:var(--brown);
+
+  outline:none;
+
+  font-size:15px;
+
+  box-shadow:
+  inset 2px 2px 0 #fff,
+  inset -2px -2px 0 #d9c49d;
 }
 
-/* 💬 Chat Layout */
-#chatBox {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
+input:focus{
+  border-color:var(--orange);
+
+  box-shadow:
+  0 0 15px rgba(201,120,44,.35);
 }
 
-/* 📩 Messages */
-#messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  /* مهم برای موبایل */
-  -webkit-overflow-scrolling: touch;
+input::placeholder{
+  color:#8d7559;
 }
 
-/* 🌈 Message Card */
-.msg {
-  max-width: min(60%, 520px);
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  animation: pop 0.2s ease;
-  word-wrap: break-word;
-  font-size: clamp(13px, 3.5vw, 15px);
+/* ===========================
+   BUTTONS
+=========================== */
+
+button{
+  padding:12px 18px;
+
+  border-radius:4px;
+
+  border:2px solid #8c6327;
+
+  background:
+  linear-gradient(
+    #f8d97e,
+    #d7a03b
+  );
+
+  color:#412b1a;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:.15s;
+
+  box-shadow:
+  inset 0 2px 0 rgba(255,255,255,.6),
+  0 4px 0 #704a18;
 }
 
-/* 👤 Username */
-.name {
-  color: #60a5fa;
-  font-weight: 600;
-  margin-right: 5px;
+button:hover{
+  transform:translateY(1px);
 }
 
-/* 🎯 Own message style */
-.msg.self {
-  align-self: flex-end;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  color: white;
+button:active{
+  transform:translateY(3px);
+
+  box-shadow:
+  inset 0 2px 0 rgba(255,255,255,.4),
+  0 1px 0 #704a18;
 }
 
-/* 📥 Input bar */
-.inputBox {
-  display: flex;
-  gap: 10px;
-  padding: 12px;
-  background: rgba(17,24,39,0.6);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,0.08);
+/* ===========================
+   CHAT
+=========================== */
 
-  /* موبایل فیکس */
-  flex-wrap: wrap;
+#chatBox{
+  height:100dvh;
+  display:flex;
+  flex-direction:column;
+
+  animation:vhs 7s infinite;
 }
 
-.inputBox input {
-  flex: 1;
-  min-width: 0;
-}
+/* VHS GLITCH */
 
-/* ✨ Scrollbar */
-#messages::-webkit-scrollbar {
-  width: 6px;
-}
-
-#messages::-webkit-scrollbar-thumb {
-  background: linear-gradient(#3b82f6, #8b5cf6);
-  border-radius: 10px;
-}
-
-/* 🎬 Animation */
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
+@keyframes vhs{
+  0%,100%{
+    transform:translateX(0);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+
+  20%{
+    transform:translateX(1px);
+  }
+
+  40%{
+    transform:translateX(-1px);
+  }
+
+  60%{
+    transform:translateX(2px);
+  }
+
+  80%{
+    transform:translateX(-2px);
   }
 }
 
-/* 🔥 Utility */
-.hidden {
-  display: none !important;
+/* ===========================
+   MESSAGES AREA
+=========================== */
+
+#messages{
+  flex:1;
+
+  overflow-y:auto;
+
+  padding:18px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+
+  -webkit-overflow-scrolling:touch;
 }
 
-@media (max-width: 768px) {
-  body {
-    overflow: auto;
-  }
+/* Scrollbar */
 
-  #chatBox {
-    height: 100dvh; /* مهم‌ترین فیکس مدرن */
-  }
+#messages::-webkit-scrollbar{
+  width:8px;
 }
 
-  .msg {
-    max-width: 85%;
-  }
+#messages::-webkit-scrollbar-track{
+  background:#e7d2a9;
+}
 
-  .inputBox {
-    flex-direction: row;
-  }
+#messages::-webkit-scrollbar-thumb{
+  background:#b47c31;
+  border-radius:20px;
+}
 
-  button {
-    padding: 12px 14px;
-    flex-shrink: 0;
-  }
+/* ===========================
+   MESSAGE BUBBLE
+=========================== */
 
+.msg{
+  max-width:min(65%,540px);
 
+  padding:12px 16px;
 
+  border-radius:6px;
 
+  background:#fff5da;
 
+  border:2px solid #c89c58;
 
-  .pending{
+  color:var(--brown);
+
+  box-shadow:
+  4px 4px 0 rgba(0,0,0,.15);
+
+  word-wrap:break-word;
+
+  animation:pop .25s ease;
+}
+
+.msg.self{
+  align-self:flex-end;
+
+  background:
+  linear-gradient(
+    #dc8d3a,
+    #c56d23
+  );
+
+  color:white;
+
+  border-color:#8f4d17;
+}
+
+/* Username */
+
+.name{
+  color:var(--red);
+
+  font-weight:700;
+
+  margin-right:5px;
+
+  text-shadow:
+  1px 1px 0 #fff;
+}
+
+/* ===========================
+   INPUT BAR
+=========================== */
+
+.inputBox{
+  display:flex;
+
+  gap:10px;
+
+  padding:12px;
+
+  background:
+  linear-gradient(
+    #ecdab5,
+    #d6ba89
+  );
+
+  border-top:4px solid #8c6330;
+
+  flex-wrap:wrap;
+}
+
+.inputBox input{
+  flex:1;
+  min-width:0;
+}
+
+/* ===========================
+   UPLOAD BAR
+=========================== */
+
+#uploadWrapper{
+  width:100%;
+
+  height:14px;
+
+  background:#b89c72;
+
+  border:2px solid #6e4c2d;
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+  margin-top:8px;
+}
+
+#uploadBar{
+  height:100%;
+
+  width:0%;
+
+  background:
+  repeating-linear-gradient(
+    45deg,
+    #ffd44a,
+    #ffd44a 10px,
+    #d9851d 10px,
+    #d9851d 20px
+  );
+
+  transition:.2s;
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.pending{
   opacity:.7;
 }
 
 .sending{
   font-size:12px;
-  color:#777;
+  color:#6f5c42;
   margin-left:8px;
+}
+
+/* ===========================
+   RETRO BANNER
+=========================== */
+
+.retroBanner{
+  text-align:center;
+
+  background:#7d1f15;
+
+  color:#ffe59e;
+
+  padding:10px;
+
+  font-weight:bold;
+
+  letter-spacing:2px;
+
+  border-bottom:4px solid #d8a02e;
+
+  text-shadow:
+  2px 2px 0 #000;
+
+  animation:blink 2s infinite;
+}
+
+@keyframes blink{
+  50%{
+    filter:brightness(1.15);
+  }
+}
+
+/* ===========================
+   POP ANIMATION
+=========================== */
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===========================
+   UTILITIES
+=========================== */
+
+.hidden{
+  display:none !important;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+  body{
+    overflow:auto;
+  }
+
+  #chatBox{
+    height:100dvh;
+  }
+
+  .msg{
+    max-width:85%;
+  }
+
+  .inputBox{
+    flex-direction:row;
+  }
+
+  button{
+    flex-shrink:0;
+  }
+
+}
+
+.msg.self{
+  background:#d6b27c;
+  border-color:#9f7542;
+}
+
+.deleteBtn{
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
+
+  font-size:14px;
+
+  padding:0;
+
+  box-shadow:none;
+
+  margin-left:auto;
+}
+
+.msgHeader{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-bottom:6px;
+}
+
+.replyBtn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
+  box-shadow:none;
+  font-size:14px;
+}
+
+.replyPreview{
+
+  background:rgba(0,0,0,.08);
+
+  border-left:3px solid #b47c31;
+
+  padding:6px;
+
+  margin-bottom:8px;
+
+  font-size:12px;
+
+  border-radius:4px;
+}
+
+#replyBox{
+
+  padding:10px;
+
+  background:#f3dfb8;
+
+  border-top:2px solid #a57a43;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+}
+
+.highlighted{
+  animation:jumpFlash .8s;
+}
+
+@keyframes jumpFlash{
+
+  0%{
+    transform:scale(1);
+  }
+
+  25%{
+    transform:scale(1.03);
+  }
+
+  50%{
+    transform:scale(0.99);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+
+#mentionBadge{
+
+  position:fixed;
+
+  right:20px;
+
+  bottom:100px;
+
+  width:55px;
+
+  height:55px;
+
+  border-radius:50%;
+
+  background:#d62c2c;
+
+  color:white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  z-index:5000;
+
+  box-shadow:
+  0 0 15px rgba(214,44,44,.5);
+
+  animation:pulseMention 1.2s infinite;
+}
+
+@keyframes pulseMention{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.1);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+.mentioned{
+
+  border-left:5px solid red;
+}
+
+
+.mention{
+
+  color:#2f6fff;
+
+  background:
+    rgba(47,111,255,.12);
+
+  padding:2px 4px;
+
+  border-radius:4px;
+
+  font-weight:bold;
+}
+
+
+.editBtn{
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
+
+  padding:0;
+
+  margin-left:4px;
+
+  box-shadow:none;
+
+  font-size:14px;
+}
+
+.editedLabel{
+
+  margin-top:4px;
+
+  font-size:11px;
+
+  opacity:.65;
+
+  font-style:italic;
 }
