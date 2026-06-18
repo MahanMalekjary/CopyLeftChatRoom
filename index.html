@@ -11,13 +11,24 @@
 <body>
 
   <div id="loginBox" class="center">
-    <h2>Enter Chat Room</h2>
-    <input id="nameInput" placeholder="Your name..." />
+    <h2>Copyleft Chatroom</h2>
     <button onclick="enterChat()">Enter</button>
   </div>
 
+
   <div id="chatBox" class="hidden">
+
     <div id="messages"></div>
+
+    <div id="replyBox" class="replyBox hidden">
+
+      <div id="replyInfo"></div>
+
+      <button onclick="cancelReply()">
+        ✖
+      </button>
+
+    </div>
 
     <div class="inputBox">
       <input id="msgInput" placeholder="Type message..." />
@@ -27,6 +38,17 @@
       </button>
     </div>
   </div>
+
+  <div id="myUsername"></div>
+
+
+  <div id="mentionBadge" class="hidden">
+
+  <span id="mentionCount">
+    0
+  </span>
+
+</div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
